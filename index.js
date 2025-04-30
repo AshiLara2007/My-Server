@@ -21,8 +21,10 @@ bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id;
     const webAppUrl = "https://my-server-production-17ad.up.railway.app/";
 
-    const message = `Welcome to our Game Dev Coin Project.\n
-You can join hands with us and collect $DevG Coins...`;
+    const message = `Welcome to our Game Dev Coin Project.
+You can join hands with us and collect $DevG Coins.
+You can withdraw those $DevG Coins every day after starting this project. So stay with us.
+Also join our channels because we will be posting details every day. Thank you..`;
 
     bot.sendMessage(chatId, message, {
         reply_markup: {
