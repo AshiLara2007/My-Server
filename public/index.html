@@ -1,52 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Game Dev Coin</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Telegram Airdrop</title>
     <style>
         body {
-            background-color: #e9f5db;
-            font-family: sans-serif;
+            font-family: Arial;
             text-align: center;
-            padding: 20px;
+            background-color: #f0ffe0;
+            margin-top: 50px;
         }
         button {
-            display: block;
-            margin: 10px auto;
+            margin: 10px;
             padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
             border: none;
             border-radius: 8px;
-            background-color: #4caf50;
-            color: white;
-            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 <h2>Welcome To Game Dev Coin</h2>
 <p>Join channels and click Start to begin!</p>
+<div id="container">
+    <div id="join-buttons">
+        <button id="join-en">Join Channel (EN)</button>
+        <button id="join-ru">Join Channel (RU)</button>
+    </div>
+    <button id="start">✅ Start</button>
+</div>
 
-<button onclick="window.open('https://t.me/game_dev_coin_en', '_blank')">Join Channel (EN)</button>
-<button onclick="window.open('https://t.me/game_dev_coin_ru', '_blank')">Join Channel (RU)</button>
-
-<button onclick="startAirdrop()">✅ Start </button>
-
-<script>
-    function startAirdrop() {
-        const user = window.Telegram.WebApp.initDataUnsafe.user;
-        fetch('https://my-server-production-17ad.up.railway.app/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ telegramId: user.id, username: user.username }),
-        })
-            .then(res => res.json())
-            .then(data => alert(data.message))
-            .catch(err => alert('Error: ' + err));
-    }
-
-    Telegram.WebApp.ready();
-</script>
+<script src="script.js"></script>
 </body>
 </html>
