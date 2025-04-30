@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Dev Coin</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background-color: #e9f5db;
+            font-family: sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background-color: #4caf50;
+            color: white;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<h2>Welcome To Game Dev Coin</h2>
+<p>Join channels and click Start to begin!</p>
+
+<button onclick="window.open('https://t.me/game_dev_coin_en', '_blank')">Join Channel (EN)</button>
+<button onclick="window.open('https://t.me/game_dev_coin_ru', '_blank')">Join Channel (RU)</button>
+
+<button onclick="startAirdrop()">✅ Start </button>
+
+<script>
+    function startAirdrop() {
+        const user = window.Telegram.WebApp.initDataUnsafe.user;
+        fetch('https://my-server-production-17ad.up.railway.app/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ telegramId: user.id, username: user.username }),
+        })
+            .then(res => res.json())
+            .then(data => alert(data.message))
+            .catch(err => alert('Error: ' + err));
+    }
+
+    Telegram.WebApp.ready();
+</script>
+</body>
+</html>
