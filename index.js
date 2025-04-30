@@ -21,12 +21,14 @@ bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id;
     const webAppUrl = "https://my-server-production-17ad.up.railway.app/";
 
-    const message = `Welcome to an exciting journey of economic and strategic gameplay! As a beekeeper, calculate, strategize, and create the best conditions for your apiary.\n\nEarn $AMBER tokens daily and withdraw them every day. Join BeeHarvest and start your development right now!`;
+    const message = `Welcome to our Game Dev Coin Project.\n\n
+
+You can join hands with us and collect $DevG Coins...`;
 
     bot.sendMessage(chatId, message, {
         reply_markup: {
             inline_keyboard: [
-                [{ text: "Start Harvest 🍯", web_app: { url: webAppUrl } }],
+                [{ text: "Start Game !", web_app: { url: webAppUrl } }],
                 [
                     { text: "Join Channel (EN)", url: "https://t.me/game_dev_coin_en" },
                     { text: "Join Channel (RU)", url: "https://t.me/game_dev_coin_ru" }
