@@ -21,8 +21,7 @@ bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id;
     const webAppUrl = "https://my-server-production-17ad.up.railway.app/";
 
-    const message = `Welcome to our Game Dev Coin Project.\n\n
-
+    const message = `Welcome to our Game Dev Coin Project.\n
 You can join hands with us and collect $DevG Coins...`;
 
     bot.sendMessage(chatId, message, {
