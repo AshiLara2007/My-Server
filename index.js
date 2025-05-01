@@ -38,8 +38,8 @@ bot.onText(/\/link/, (msg) => {
     const chatId = msg.chat.id;
     const miniAppUrl = `https://my-server-production-17ad.up.railway.app/?start=ref`;
 
-    bot.sendMessage(chatId, "Thank you very much,\n" +
-        "We sincerely appreciate your support for this project.\n" +
+    bot.sendMessage(chatId, "Thank you very much," +
+        "We sincerely appreciate your support for this project." +
         "You can get $DevG Coin from this. After starting the project, you can get that Coin to your wallet daily..", {
         reply_markup: {
             inline_keyboard: [
