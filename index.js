@@ -20,7 +20,7 @@ const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
 // ✅ Set bot commands
 bot.setMyCommands([
     { command: 'start', description: 'Start Game' },
-    { command: 'link', description: 'Referral link' },
+    { command: 'Link', description: 'Referral link' },
 ]);
 
 // /start handler
