@@ -38,10 +38,16 @@ bot.onText(/\/link/, (msg) => {
     const chatId = msg.chat.id;
     const miniAppUrl = `https://my-server-production-17ad.up.railway.app/?start=ref`;
 
-    bot.sendMessage(chatId, "Click below to invite your friends! 👇", {
+    bot.sendMessage(chatId, "Thank you very much,\n" +
+        "We sincerely appreciate your support for this project.\n" +
+        "You can get $DevG Coin from this. After starting the project, you can get that Coin to your wallet daily..", {
         reply_markup: {
             inline_keyboard: [
-                [{ text: "👥 Open Friends Tab", web_app: { url: miniAppUrl } }]
+                [{ text: "👥 Open Friends Tab", web_app: { url: miniAppUrl } }],
+                [
+                    { text: "Join Channel (EN)", url: "https://t.me/game_dev_coin_en" },
+                    { text: "Join Channel (RU)", url: "https://t.me/game_dev_coin_ru" }
+                ],
             ]
         }
     });
