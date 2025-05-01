@@ -17,6 +17,13 @@ app.listen(port, () => {
 
 const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
 
+// ✅ Set bot commands
+bot.setMyCommands([
+    { command: 'start', description: 'Start Game' },
+    { command: 'link', description: 'Referral link' },
+]);
+
+// /start handler
 bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id;
     const webAppUrl = "https://my-server-production-17ad.up.railway.app/";
