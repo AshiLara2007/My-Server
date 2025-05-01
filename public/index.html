@@ -7,36 +7,36 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="loading">
-        <div class="ring"></div>
-        <div class="ring"></div>
-        <div class="ring"></div>
-        <div class="loadingh1">
-            <span id="typing-text"></span>
-        </div>
+<div class="loading">
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
+    <div class="loadingh1">
+        <span id="typing-text"></span>
     </div>
+</div>
 
-    <script>
-        const text = "Loading...";
-        let index = 0;
-        const speed = 100;
-        const typingTarget = document.getElementById("typing-text");
+<script>
+    const text = "Loading...";
+    let index = 0;
+    const speed = 100;
+    const typingTarget = document.getElementById("typing-text");
 
-        function type() {
-            if (index < text.length) {
-                typingTarget.innerHTML += text.charAt(index);
-                index++;
-                setTimeout(type, speed);
-            }
+    function type() {
+        if (index < text.length) {
+            typingTarget.innerHTML += text.charAt(index);
+            index++;
+            setTimeout(type, speed);
         }
+    }
 
-        // Start typing
-        type();
+    // Start typing
+    type();
 
-        // Redirect after 5 seconds
-        setTimeout(() => {
-            window.location.href = "home.html"; // 🧭 Replace with actual home page
-        }, 2500);
-    </script>
+    // Redirect after 5 seconds
+    setTimeout(() => {
+        window.location.href = "home.html"; // 🧭 Replace with actual home page
+    }, 2500);
+</script>
 </body>
 </html>
