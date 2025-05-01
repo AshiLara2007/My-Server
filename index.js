@@ -43,11 +43,7 @@ bot.onText(/\/link/, (msg) => {
         "You can get $DevG Coin from this. After starting the project, you can get that Coin to your wallet daily..", {
         reply_markup: {
             inline_keyboard: [
-                [{ text: "👥 Open Friends Tab", web_app: { url: miniAppUrl } }],
-                [
-                    { text: "Join Channel (EN)", url: "https://t.me/game_dev_coin_en" },
-                    { text: "Join Channel (RU)", url: "https://t.me/game_dev_coin_ru" }
-                ],
+                [{ text: "👥 Open Friends Tab", web_app: { url: miniAppUrl } }]
             ]
         }
     });
