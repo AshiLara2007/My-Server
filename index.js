@@ -33,6 +33,13 @@ You can join hands with us and collect $DevG Coins.
 You can withdraw those $DevG Coins every day after starting this project. So stay with us.
 Also join our channels because we will be posting details every day. Thank you..`;
 
+// /link command handler
+bot.onText(/\/link/, (msg) => {
+    const chatId = msg.chat.id;
+    const referralLink = `https://t.me/game_dev_coin_bot?start=${chatId}`; // or custom link
+    bot.sendMessage(chatId, `🔗 Your referral link:\n${referralLink}`);
+});
+
     bot.sendMessage(chatId, message, {
         reply_markup: {
             inline_keyboard: [
