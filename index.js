@@ -34,22 +34,24 @@ You can withdraw those $DevG Coins every day after starting this project. So sta
 Also join our channels because we will be posting details every day. Thank you..`;
 
 // ✅ /link handler (opens mini app at "Friends" tab)
-    bot.onText(/\/link/, (msg) => {
-        const chatId = msg.chat.id;
-        const miniAppUrl = `https://my-server-production-17ad.up.railway.app/?start=ref`;
+bot.onText(/\/link/, (msg) => {
+    const chatId = msg.chat.id;
+    const userId = msg.from.id;
 
-        bot.sendMessage(chatId, "Thank you very much ,We sincerely appreciate your support for this project. You can get $DevG Coin from this. After starting the project, you can get that Coin to your wallet daily..", {
-            reply_markup: {
-                inline_keyboard: [
-                    [{ text: " Open Friends Tab", web_app: { url: miniAppUrl } }],
-                    [
-                        { text: "Join Channel (EN)", url: "https://t.me/game_dev_coin_en" },
-                        { text: "Join Channel (RU)", url: "https://t.me/game_dev_coin_ru" }
-                    ],
-                ]
-            }
-        });
+    const miniAppUrl = `https://my-server-production-17ad.up.railway.app/?start=${userId}`;
+
+    bot.sendMessage(chatId, "Thank you very much, We sincerely appreciate your support for this project. You can get $DevG Coin from this. After starting the project, you can get that Coin to your wallet daily.", {
+        reply_markup: {
+            inline_keyboard: [
+                [{ text: "🔗 Open Friends Tab", web_app: { url: miniAppUrl } }],
+                [
+                    { text: "Join Channel (EN)", url: "https://t.me/game_dev_coin_en" },
+                    { text: "Join Channel (RU)", url: "https://t.me/game_dev_coin_ru" }
+                ],
+            ]
+        }
     });
+});
 
 
     bot.sendMessage(chatId, message, {
