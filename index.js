@@ -17,13 +17,16 @@ app.listen(port, () => {
 
 const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true });
 
-// ✅ Set bot commands
+// ✅ Store users who already received the link
+const sentLinks = new Set();
+
+// ✅ Set bot command menu
 bot.setMyCommands([
     { command: 'start', description: 'Start Game' },
-    { command: 'Link', description: 'Referral link' },
+    { command: 'link', description: 'Get your referral link' },
 ]);
 
-// /start handler
+// ✅ /start handler
 bot.onText(/\/start/, (msg) => {
     const chatId = msg.chat.id;
     const webAppUrl = "https://my-server-production-17ad.up.railway.app/";
@@ -32,30 +35,6 @@ bot.onText(/\/start/, (msg) => {
 You can join hands with us and collect $DevG Coins.
 You can withdraw those $DevG Coins every day after starting this project. So stay with us.
 Also join our channels because we will be posting details every day. Thank you..`;
-
-// ✅ /link handler (opens mini app at "Friends" tab)
-    bot.onText(/\/link/, (msg) => {
-        const chatId = msg.chat.id;
-        const userId = msg.from.id;
-
-        // First time only
-        const miniAppUrl = `https://my-server-production-17ad.up.railway.app/?start=${userId}`;
-
-        bot.sendMessage(chatId, "Thank you very much, We sincerely appreciate your support for this project. You can get $DevG Coin from this. After starting the project, you can get that Coin to your wallet daily.", {
-            reply_markup: {
-                inline_keyboard: [
-                    [{ text: " Open Friends Tab", web_app: { url: miniAppUrl } }],
-                    [
-                        { text: "Join Channel (EN)", url: "https://t.me/game_dev_coin_en" },
-                        { text: "Join Channel (RU)", url: "https://t.me/game_dev_coin_ru" }
-                    ],
-                ]
-            }
-        });
-
-        sentLinks.add(userId); // Mark user as sent
-    });
-
 
     bot.sendMessage(chatId, message, {
         reply_markup: {
@@ -68,4 +47,21 @@ Also join our channels because we will be posting details every day. Thank you..
             ]
         }
     });
+});
+
+// ✅ /link handler - Only 1 time per user, no buttons
+bot.onText(/\/link/, (msg) => {
+    const chatId = msg.chat.id;
+    const userId = msg.from.id;
+
+    if (sentLinks.has(userId)) {
+        bot.sendMessage(chatId, "You’ve already received your referral link.");
+        return;
+    }
+
+    const miniAppUrl = `https://my-server-production-17ad.up.railway.app/?start=${userId}`;
+    const message = `Here is your personal referral link to open the Friends tab:\n\n${miniAppUrl}\n\nShare it with your friends to earn $DevG Coins daily.`;
+
+    bot.sendMessage(chatId, message);
+    sentLinks.add(userId);
 });
