@@ -38,11 +38,6 @@ Also join our channels because we will be posting details every day. Thank you..
         const chatId = msg.chat.id;
         const userId = msg.from.id;
 
-        if (sentLinks.has(userId)) {
-            bot.sendMessage(chatId, "You’ve already received your referral link.");
-            return;
-        }
-
         // First time only
         const miniAppUrl = `https://my-server-production-17ad.up.railway.app/?start=${userId}`;
 
